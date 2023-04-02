@@ -49,7 +49,7 @@
       PasswordAuthentication = false;
       PermitRootLogin = "no";
       GatewayPorts = "clientspecified";
-    }
+    };
     # Automatically remove stale sockets
     extraConfig = ''
       StreamLocalBindUnlink yes
