@@ -46,6 +46,7 @@
   fileSystems."/cold" =
     { device = "/dev/disk/by-uuid/2F2B-FB4E";
       fsType = "exfat";
+      options = [ "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
     };
 
   swapDevices = [ ];
