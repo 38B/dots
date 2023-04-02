@@ -44,15 +44,16 @@
 
   services.openssh = {
     enable = true;
-    # Harden
-    passwordAuthentication = false;
-    permitRootLogin = "no";
+    settings = {
+      # Harden
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      GatewayPorts = "clientspecified";
+    }
     # Automatically remove stale sockets
     extraConfig = ''
       StreamLocalBindUnlink yes
     '';
-    # Allow forwarding ports to everywhere
-    gatewayPorts = "clientspecified";
 
     hostKeys = [{
       path = "/persist/keystore/sippet/id_sippet";
