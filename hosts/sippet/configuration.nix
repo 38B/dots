@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 {
   imports =
     [ 
@@ -43,7 +42,26 @@
     tomb
   ];
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    # Harden
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+    # Automatically remove stale sockets
+    extraConfig = ''
+      StreamLocalBindUnlink yes
+    '';
+    # Allow forwarding ports to everywhere
+    gatewayPorts = "clientspecified";
+
+    hostKeys = [{
+      path = "/persist/keystore/sippet/id_sippet";
+      type = "ed25519";
+    }];
+  };
+
+  # Passwordless sudo when SSH'ing with keys
+  security.pam.enableSSHAgentAuth = true;
 
   system.stateVersion = "23.05";
   

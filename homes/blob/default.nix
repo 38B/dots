@@ -3,6 +3,7 @@
   users.users.blob = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    # password = "";
+    openssh.authorizedKeys.keys = [ "/persist/keystore/blob/id_blob.pub" ];
+    passwordFile = "/persist/keystore/blob/passhash";
   };
 }
