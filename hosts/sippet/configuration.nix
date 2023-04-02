@@ -26,8 +26,21 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   environment.systemPackages = with pkgs; [
-    vim 
+    neovim 
+    file
     wget
+    curl
+    btop
+    lsof
+    tmux
+    rsync
+    git
+    pinentry
+    pinentry-curses
+    cryptsetup
+    gnupg
+    which
+    tomb
   ];
 
   services.openssh.enable = true;
