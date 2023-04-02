@@ -32,8 +32,6 @@
 
   services.openssh.enable = true;
 
-  system.copySystemConfiguration = true;
-
   system.stateVersion = "23.05";
   
   nix = {
