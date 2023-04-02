@@ -22,7 +22,7 @@
     earlySetup = true;
   };
 
-  services.xserver.enable = true;
+  services.xserver.enable = false;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   environment.systemPackages = with pkgs; [
