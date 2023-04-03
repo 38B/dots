@@ -4,6 +4,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keyFiles = [ "/persist/keystore/blob/id_blob.pub" ];
-    passwordFile = "/persist/keystore/blob/passhash";
+    hashedPassowrd =  lib.strings.fileContents /persist/keystore/blob/passhash;
   };
 }
