@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, inputs, lib, ... }:
 {
   users.users.blob = {
     isNormalUser = true;
