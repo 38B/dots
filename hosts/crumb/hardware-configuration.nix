@@ -32,9 +32,9 @@
     { device = "zroot/eternal/home";
       fsType = "zfs";
     };
-
-  fileSystems."/home/muck" =
-    { device = "zroot/eternal/homes/muck";
+    
+  fileSystems."/home/speck/Desktop" =
+    { device = "zroot/eternal/desktops/speck";
       fsType = "zfs";
     };
 

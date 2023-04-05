@@ -4,7 +4,7 @@
 
   imports = [ 
     ./hardware-configuration.nix
-    ../../homes/blob
+    ../../homes/speck
   ];
 
   # Use the systemd-boot EFI boot loader.
