@@ -102,6 +102,7 @@
     tomb
 
     libsForQt5.bismuth
+    qutebrowser
+    kmymoney
   ];
-
 }
