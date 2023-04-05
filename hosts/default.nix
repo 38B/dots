@@ -46,6 +46,15 @@ in {
         ++ [
           inputs.home-manager.nixosModules.home-manager
           ./sippet/configuration.nix
+	];
+    };
+
+    crumb = nixosSystem {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules =
+        defaultModules
+        ++ [
+          inputs.home-manager.nixosModules.home-manager
           ./crumb/configuration.nix
 	];
     };
