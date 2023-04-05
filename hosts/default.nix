@@ -46,6 +46,7 @@ in {
         ++ [
           inputs.home-manager.nixosModules.home-manager
           ./sippet/configuration.nix
+          ./crumb/configuration.nix
 	];
     };
   };
