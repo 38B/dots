@@ -4,6 +4,7 @@
 
   imports = [ 
     ./hardware-configuration.nix
+    ../../homes/muck
     ../../homes/speck
   ];
 
@@ -15,7 +16,7 @@
   networking.hostId = "eee65be0";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "New_York/America";
+  time.timeZone = "America/New_York";
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -83,6 +84,15 @@
     };
   };
 
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    elisa
+    gwenview
+    khelpcenter
+    plasma-browser-integration
+  ];
+
+  programs.dconf.enable = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -92,26 +102,54 @@
     jack.enable = true;
   };
 
+  services.printing.enable = true;
+  services.printing.cups-pdf.enable = true;
+
+  documentation.enable = true;
+  documentation.nixos.enable = false;
+  documentation.man.enable = true;
+  documentation.info.enable = false;
+  documentation.doc.enable = false;
+
+  # Don't wait for network startup
+  # https://old.reddit.com/r/NixOS/comments/vdz86j/how_to_remove_boot_dependency_on_network_for_a
+  systemd = {
+    targets.network-online.wantedBy = pkgs.lib.mkForce []; # Normally ["multi-user.target"]
+    services.NetworkManager-wait-online.wantedBy = pkgs.lib.mkForce []; # Normally ["network-online.target"]
+  };
+
   environment.systemPackages = with pkgs; [
+    # Terminal Tools
     neovim
+    tmux
+    # File Tools
     file
+    lsof
+    which
+    xz
+    lz4
+    zstd
+    zip
+    unzip
+    # Download Tools
     wget
     curl
-    btop
-    lsof
-    tmux
     rsync
     git
-    tig
+    # Monitors
+    acpi
+    htop
+    iotop
+    iftop
+    # Crypto Tools
     pinentry
     pinentry-curses
     cryptsetup
     gnupg
-    which
     tomb
-
-    libsForQt5.bismuth
+    # Browsers
     qutebrowser
-    kmymoney
+    # KDE Tools
+    libsForQt5.bismuth
   ];
 }

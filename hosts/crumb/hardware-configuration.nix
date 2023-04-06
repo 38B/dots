@@ -29,12 +29,17 @@
     };
 
   fileSystems."/home" =
-    { device = "zroot/eternal/home";
+    { device = "zroot/ephemeral/home";
       fsType = "zfs";
     };
     
   fileSystems."/home/speck/Desktop" =
     { device = "zroot/eternal/desktops/speck";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home/muck/Desktop" =
+    { device = "zroot/eternal/desktops/muck";
       fsType = "zfs";
     };
 
