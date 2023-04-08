@@ -57,5 +57,7 @@
     '';
   };
 
+  programs.broot.enable = true;
+
   imports = [ ];
 }
