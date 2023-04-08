@@ -1,4 +1,4 @@
-{ self, inputs, lib, ... }:
+{ self, inputs, lib, pkgs, ... }:
 {
   users.users.muck = {
     isNormalUser = true;

@@ -152,4 +152,6 @@
     # KDE Tools
     libsForQt5.bismuth
   ];
+
+  environment.shells = with pkgs; [ zsh ];
 }
