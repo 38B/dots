@@ -6,5 +6,6 @@
     extraGroups = [ "wheel" "networkmanager" ];
     openssh.authorizedKeys.keyFiles = [ "/persist/keystore/muck/id_muck.pub" ];
     hashedPassword =  lib.strings.fileContents /persist/keystore/muck/passhash;
+    shell = pkgs.zsh;
   };
 }
