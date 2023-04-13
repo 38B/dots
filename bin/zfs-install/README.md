@@ -7,6 +7,7 @@ Step 2: Enable flakes and install git
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 nix-env -f '<nixpkgs>' -iA git
+```
 
 Step 3: Clone this repository
 
