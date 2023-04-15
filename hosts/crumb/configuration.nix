@@ -136,6 +136,8 @@
     curl
     rsync
     git
+    # Keyboard Tools
+    xcape
     # Monitors
     acpi
     htop
