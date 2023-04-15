@@ -142,11 +142,10 @@
     iotop
     iftop
     # Crypto Tools
+    age
     pinentry
     pinentry-curses
     cryptsetup
-    gnupg
-    tomb
     # Browsers
     qutebrowser
     # KDE Tools
@@ -155,4 +154,11 @@
 
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
+
+  # CapsLock as ESC and CTRL
+  console.useXkbConfig = true;
+  services.xserver.xkbOptions = "caps:ctrl_modifier";
+  environment.shellInit = ''
+    xcape -e "Caps_Lock=Escape"
+  '';
 }
