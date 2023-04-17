@@ -9,6 +9,7 @@
     stateVersion = "23.05";
     packages = with pkgs; [ 
       neofetch
+      kmymoney
     ];
   };
 
@@ -58,6 +59,8 @@
   };
 
   programs.broot.enable = true;
+
+
 
   imports = [ ];
 }
