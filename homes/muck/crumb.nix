@@ -16,6 +16,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
     extraLuaConfig = ''
       local opt = vim.opt
 
@@ -24,7 +26,57 @@
       opt.smartindent = true
       opt.tabstop = 2
       opt.softtabstop = 2
+
+      require("lazy").setup({
+        { "folke/which-key.nvim", 
+           config = function()
+             vim.o.timeout = true
+             vim.o.timeoutlen = 300
+             require("which-key").setup({
+               -- your configuration comes here
+               -- or leave it empty to use the default settings
+               -- refer to the configuration section below
+             })
+           end,
+        },
+        { "akinsho/toggleterm.nvim",
+          version = "*",
+          config = function()
+            require("toggleterm").setup({
+              open_mapping = [[<c-\>]],
+            })
+          end,
+        },
+        { "nvim-neo-tree/neo-tree.nvim",
+          branch = "v2.x",
+          requires = { 
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+          },
+          config = function()
+            vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+            require("neo-tree").setup({
+              close_if_last_window = false,
+              vim.api.nvim_set_keymap( "n", "<C-n>", "<cmd> NeoTreeFocusToggle <CR>", {}),
+              vim.api.nvim_set_keymap( "n", "<leader>e", "<cmd> NeoTreeFocus <CR>", {}),
+              filesystem = {
+                hijack_netrw_behavior = "open_current",
+              },
+            })
+          end,
+	      },
+      })
     '';
+    plugins = with pkgs.vimPlugins; [
+      plenary-nvim
+      lazy-nvim
+      toggleterm-nvim
+      which-key-nvim
+      neo-tree-nvim
+      nvim-web-devicons
+      nui-nvim
+    ];
   };
 
   programs.tmux = {
@@ -60,7 +112,4 @@
 
   programs.broot.enable = true;
 
-
-
-  imports = [ ];
 }
