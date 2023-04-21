@@ -250,7 +250,7 @@
       set -g status-style 'bg=colour8 fg=colour0 dim'
       set -g status-left-length 30
       set -g status-justify centre
-      set -g status-left '#[fg=colour8,bg=colour0]◱ #[fg=colour9,bg=colour0]#I#[fg=colour8,bg=colour0]▹ #[fg=colour9,bg=colour0]#W #[fg=colour8,bg=colour0]░▒#[fg=colour0,bg=colour8]░'
+      set -g status-left '#[fg=colour8,bg=colour0]◱ #[fg=colour9,bg=colour0]#I/#{last_window_index}#[fg=colour8,bg=colour0]▹ #[fg=colour9,bg=colour0]#W #[fg=colour8,bg=colour0]░▒#[fg=colour0,bg=colour8]░'
       set -g status-right-length "100"
       set -g status-right '░▒#[fg=colour8,bg=colour0]░  %a %B %-d, %Y'
       set -g pane-border-style 'fg=colour3 bg=colour0'
