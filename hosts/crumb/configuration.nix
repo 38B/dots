@@ -68,14 +68,15 @@
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
   services.xserver.enable = true;
-  services.xserver.displayManager.greetd = { 
-    enable = true;
+  services.greetd = { 
+   enable = true;
     settings = {
       default_session = {
-        command =  "${pkgs.greetd.tuigreet}/bin/tuigreet"
+        command =  "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd 'dbus-run-session startplasma-wayland'";
       };
     };
   };
+#  services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5 = {
     enable = true;
   };
