@@ -54,7 +54,7 @@
           _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
         };
 
-        packages.x86_64-linux = {
+        pkgs.x86_64-linux = {
           crumbiso = nixos-generators.nixosGenerate {
             system = "x86_64-linux";
             modules = [
