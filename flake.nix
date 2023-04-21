@@ -38,10 +38,12 @@
       {
         imports = [
           ./hosts
-	  ./homes
-	  ./shells
+      	  ./homes
+	        ./shells
         ];
-	systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+	      
+        systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+        
         perSystem = {
           config,
           inputs',
@@ -51,7 +53,18 @@
           # make pkgs available to all `perSystem` functions
           _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
         };
-	# CI
+
+        packages.x86_64-linux = {
+          crumbiso = nixos-generators.nixosGenerate {
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/crumb/configuration.nix
+            ];
+            format = "iso";
+	        };
+        };
+
+        # CI
         flake.hydraJobs = let
           inherit (nixpkgs) lib;
           buildHomeManager = arch:
