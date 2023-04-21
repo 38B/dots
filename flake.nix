@@ -54,16 +54,6 @@
           _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
         };
 
-        inputs.nixpkgs.x86_64-linux = {
-          crumbiso = nixos-generators.nixosGenerate {
-            system = "x86_64-linux";
-            modules = [
-              ./hosts/crumb/configuration.nix
-            ];
-            format = "iso";
-	        };
-        };
-
         # CI
         flake.hydraJobs = let
           inherit (nixpkgs) lib;
