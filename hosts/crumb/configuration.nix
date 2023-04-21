@@ -67,9 +67,15 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
-  
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.greetd = { 
+    enable = true;
+    settings = {
+      default_session = {
+        command =  "${pkgs.greetd.tuigreet}/bin/tuigreet"
+      };
+    };
+  };
   services.xserver.desktopManager.plasma5 = {
     enable = true;
   };
@@ -153,6 +159,8 @@
     qutebrowser
     # KDE Tools
     libsForQt5.bismuth
+    # Greeter
+    greetd.tuigreet
   ];
 
   programs.zsh.enable = true;
