@@ -85,6 +85,7 @@
   };
 
   environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    konsole
     elisa
     gwenview
     khelpcenter
