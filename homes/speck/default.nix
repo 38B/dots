@@ -1,4 +1,4 @@
-{ self, inputs, lib, ... }:
+{ self, inputs, lib, pkgs, ... }:
 {
   users.users.speck = {
     isNormalUser = true;
