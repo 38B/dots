@@ -127,6 +127,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Terminals
+    foot
     # Terminal Tools
     neovim
     tmux
@@ -146,7 +148,7 @@
     git
     # Keyboard Tools
     xcape
-    # Monitors
+    # Performance Monitors
     acpi
     htop
     iotop
@@ -167,10 +169,11 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
-  # CapsLock as ESC and CTRL
-  console.useXkbConfig = true;
-  services.xserver.xkbOptions = "caps:ctrl_modifier";
-  environment.shellInit = ''
-    xcape -e "Caps_Lock=Escape"
-  '';
+  # CapsLock as ESC and CTRL in X11
+#  console.useXkbConfig = true;
+#  services.xserver.xkbOptions = "caps:ctrl_modifier";
+#  environment.shellInit = ''
+#    xcape -e "Caps_Lock=Escape"
+#  '';
+
 }

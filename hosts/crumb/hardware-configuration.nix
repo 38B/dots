@@ -6,7 +6,7 @@
   boot.kernelParams = [ "elevator=none" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
   boot.zfs.devNodes = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b444a494a69d2-part3";
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     zfs rollback -r zroot/ephemeral/slash@blank
