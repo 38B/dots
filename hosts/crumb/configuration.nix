@@ -72,7 +72,7 @@
    enable = true;
     settings = {
       default_session = {
-        command =  "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd 'DISPLAY=:0 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland'";
+        command =  "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd 'dbus-run-session startplasma-wayland'";
       };
     };
   };
@@ -170,7 +170,7 @@
   environment.shells = with pkgs; [ zsh ];
 
   # CapsLock as ESC and CTRL in X11
-#  console.useXkbConfig = true;
+  console.useXkbConfig = true;
 #  services.xserver.xkbOptions = "caps:ctrl_modifier";
 #  environment.shellInit = ''
 #    xcape -e "Caps_Lock=Escape"
