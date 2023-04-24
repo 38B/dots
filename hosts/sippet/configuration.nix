@@ -68,7 +68,7 @@
     '';
 
     hostKeys = [{
-      path = "/persist/keystore/sippet/id_sippet";
+      path = "/keystore/sippet/id_sippet";
       type = "ed25519";
     }];
   };
