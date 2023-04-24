@@ -12,6 +12,7 @@
 
   networking.hostName = "sippet";
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.wireless.iwd.enable = false;
 
   time.timeZone = "America/New_York";
 
@@ -92,7 +93,6 @@
   };
 
   networking.hostId = "3f871983";
-  networking.wireless.enable = false;
   boot.supportedFilesystems = [ "zfs" "ntfs" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [ "elevator=none" "radeon.si_support=0" "amdgpu.si_support=1" ];
