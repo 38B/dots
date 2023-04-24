@@ -13,7 +13,7 @@
   networking.hostName = "sippet";
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  time.timeZone = "New_York/America";
+  time.timeZone = "America/New_York";
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -25,21 +25,33 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   environment.systemPackages = with pkgs; [
+    # Terminal Tools
     neovim 
+    tmux
+    # File Tools
     file
+    lsof
+    which
+    xz
+    lz4
+    zstd
+    zip
+    unzip
+    # Download Tools
     wget
     curl
-    btop
-    lsof
-    tmux
     rsync
-    git
+    # Performance Monitors
+    acpi
+    htop
+    iotop
+    iftop
+    # Crypto Tools
+    age
     pinentry
     pinentry-curses
-    cryptsetup
-    gnupg
-    which
-    tomb
+    # Browser
+    w3m
   ];
 
   services.openssh = {
@@ -79,18 +91,34 @@
     allowUnfree = true;
   };
 
-  networking.hostId = "db27bd4b";
-  boot.supportedFilesystems = [ "zfs" ];
+  networking.hostId = "3f871983";
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [ "elevator=none" "radeon.si_support=0" "amdgpu.si_support=1" ];
-  boot.zfs.devNodes = "/dev/disk/by-label/zroot";
+  boot.zfs.devNodes = "/dev/disk/by-label/sippet-os";
   boot.initrd.postDeviceCommands = lib.mkAfter ''
-    zfs rollback -r zroot/ephemeral/slash@blank
+    zfs rollback -r sippet-os/ephemeral/slash@blank
   '';
 
   zramSwap = {
     enable = true;
     swapDevices = 1;
+  };
+
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+
+  documentation.enable = true;
+  documentation.nixos.enable = false;
+  documentation.man.enable = true;
+  documentation.info.enable = false;
+  documentation.doc.enable = false;
+
+  # Don't wait for network startup
+  # https://old.reddit.com/r/NixOS/comments/vdz86j/how_to_remove_boot_dependency_on_network_for_a
+  systemd = {
+    targets.network-online.wantedBy = pkgs.lib.mkForce []; # Normally ["multi-user.target"]
+    services.NetworkManager-wait-online.wantedBy = pkgs.lib.mkForce []; # Normally ["network-online.target"]
   };
 
 }

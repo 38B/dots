@@ -14,42 +14,34 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "zroot/ephemeral/slash";
+    { device = "sippet-os/ephemeral/slash";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/90C5-F635";
+    { device = "/dev/disk/by-uuid/26A8-0C7E";
       fsType = "vfat";
     };
 
   fileSystems."/nix" =
-    { device = "zroot/ephemeral/nix";
+    { device = "sippet-os/ephemeral/nix";
       fsType = "zfs";
     };
 
   fileSystems."/home" =
-    { device = "zroot/ephemeral/home";
+    { device = "sippet-os/ephemeral/home";
       fsType = "zfs";
     };
 
   fileSystems."/persist" =
-    { device = "zroot/eternal/persist";
+    { device = "sippet-os/eternal/persist";
       fsType = "zfs";
     };
 
-  fileSystems."/persist/desktops" =
-    { device = "zroot/eternal/persist/desktops";
+  fileSystems."/keystore" =
+    { device = "sippet-os/ephemeral/keystore";
       fsType = "zfs";
     };
-
-  fileSystems."/cold" =
-    { device = "/dev/disk/by-uuid/2F2B-FB4E";
-      fsType = "exfat";
-      options = [ "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
-    };
-
-  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
