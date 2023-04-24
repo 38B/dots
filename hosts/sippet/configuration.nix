@@ -12,7 +12,7 @@
 
   networking.hostName = "sippet";
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.wireless.iwd.enable = false;
+  networking.networkmanager.unmanaged = [ "wlp3s0" ];
 
   time.timeZone = "America/New_York";
 
