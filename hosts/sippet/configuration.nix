@@ -134,7 +134,7 @@
           port = 2223;
         };
       };
-      kernelModules = [ "amdgpu" ];
+      kernelModules = [ "amdgpu" "r8169" ];
       postDeviceCommands = lib.mkAfter ''
         zfs rollback -r sippet-os/ephemeral/slash@blank
       '';
