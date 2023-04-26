@@ -96,11 +96,8 @@
   boot.supportedFilesystems = [ "zfs" "ntfs" ];
   boot.kernelParams = [ "elevator=none" "radeon.si_support=0" "amdgpu.si_support=1" ];
   boot.zfs.devNodes = "/dev/disk/by-label/sippet-os";
-  boot.initrd.postDeviceCommands = lib.mkAfter ''
-    zfs rollback -r sippet-os/ephemeral/slash@blank
-  '';
 
-  zramSwap = {
+   zramSwap = {
     enable = true;
     swapDevices = 1;
   };
@@ -134,6 +131,9 @@
         hostKeys = [ /keystore/sippet/id_sippet_init ];
         authorizedKeys = [ /keystore/sippet/id_sippet_init.pub ];
         port = 2223;
+        postDeviceCommands = lib.mkAfter ''
+          zfs rollback -r sippet-os/ephemeral/slash@blank
+        '';
       };
       kernelModules = [ "amdgpu" ];
     };
