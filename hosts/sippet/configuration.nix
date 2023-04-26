@@ -128,7 +128,7 @@
   '';
 
   boot = {
-    initrd.network {
+    initrd.network = {
       enable = true;
       ssh = {
         enable = true;
