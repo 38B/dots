@@ -132,10 +132,10 @@
           hostKeys = [ /keystore/sippet/id_sippet_init ];
           authorizedKeys = [ /keystore/sippet/id_sippet_init.pub ];
           port = 2223;
-          postDeviceCommands = lib.mkAfter ''
-            zfs rollback -r sippet-os/ephemeral/slash@blank
-          '';
         };
+        postDeviceCommands = lib.mkAfter ''
+          zfs rollback -r sippet-os/ephemeral/slash@blank
+        '';
       };
       kernelModules = [ "amdgpu" ];
     };
