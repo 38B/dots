@@ -140,4 +140,4 @@
       kernelModules = [ "amdgpu" ];
     };
   };  
-
+}
