@@ -94,7 +94,6 @@
 
   networking.hostId = "3f871983";
   boot.supportedFilesystems = [ "zfs" "ntfs" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [ "elevator=none" "radeon.si_support=0" "amdgpu.si_support=1" ];
   boot.zfs.devNodes = "/dev/disk/by-label/sippet-os";
   boot.initrd.postDeviceCommands = lib.mkAfter ''
@@ -136,6 +135,7 @@
         authorizedKeys = [ /keystore/sippet/id_sippet_init.pub ];
         port = 2223;
       };
+      kernelModules = [ "amdgpu" ];
     };
   };
 }
