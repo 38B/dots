@@ -135,6 +135,7 @@
         };
       };
       kernelModules = [ "amdgpu" "r8169" ];
+      preLVMCommands = lib.mkBefore 400 "sleep 1";
       postDeviceCommands = lib.mkAfter ''
         zfs rollback -r sippet-os/ephemeral/slash@blank
       '';
