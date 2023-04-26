@@ -133,7 +133,7 @@
           authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmo4gVcs6I/wmpjURsZNVo63/nRfdp80rZv4wxg8Y2y" ];
           port = 2223;
         };
-        udhcpc.extraArgs = "-t 10";
+        udhcpc.extraArgs = [ "-t 10" ];
       };
       kernelModules = [ "amdgpu" "r8169" ];
       postDeviceCommands = lib.mkAfter ''
