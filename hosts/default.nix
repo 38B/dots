@@ -39,6 +39,7 @@ let
   ];
 in {
   flake.nixosConfigurations = {
+    # sippet - a laptop turned server
     sippet = nixosSystem {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules =
@@ -46,9 +47,10 @@ in {
         ++ [
           inputs.home-manager.nixosModules.home-manager
           ./sippet/configuration.nix
-	];
+	      ];
     };
 
+    # crumb - my main laptop
     crumb = nixosSystem {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules =
@@ -56,7 +58,7 @@ in {
         ++ [
           inputs.home-manager.nixosModules.home-manager
           ./crumb/configuration.nix
-	];
+	      ];
     };
   };
 }
