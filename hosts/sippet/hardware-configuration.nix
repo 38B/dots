@@ -9,7 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usb_storage" "uas" "sd_mod" ];
-  boot.blacklistedKernelModules = [ "rtw88_8822ce" ]; 
+  boot.blacklistedKernelModules = [ "rtw88_8822ce" "btusb" ]; 
   boot.kernelModules = [ "kvm-amd" "r8169" ];
   boot.extraModulePackages = [ ];
 
