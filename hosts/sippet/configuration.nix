@@ -64,6 +64,7 @@
     wget
     curl
     rsync
+    git
     # Performance Monitors
     acpi
     htop
