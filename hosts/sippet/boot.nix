@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, system, ... }:
 {
   boot = {
     kernelModules = [ "kvm-amd" "r8169" ];
