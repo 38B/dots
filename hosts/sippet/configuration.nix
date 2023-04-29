@@ -1,11 +1,18 @@
 { lib, config, pkgs, ... }:
 {
-  imports = [ 
-    ./nixos.nix
-    ./networking.nix
-    ./disks.nix
-    ../../homes/blob
-  ];
+  imports =
+    [ 
+      ./hardware-configuration.nix
+      ../../homes/blob
+    ];
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "sippet";
+  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.unmanaged = [ "wlp3s0" ];
 
   time.timeZone = "America/New_York";
 
@@ -17,35 +24,6 @@
 
   services.xserver.enable = false;
   services.xserver.videoDrivers = [ "amdgpu" ];
-
-  boot = {
-    kernelModules = [ "kvm-amd" "r8169" ];
-    blacklistedKernelModules = [ "rtw88_8822ce" "btusb" ]; 
-    kernelParams = [ "elevator=none" "radeon.si_support=0" "amdgpu.si_support=1" ];
-    initrd = {
-      availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usb_storage" "uas" "sd_mod" ];
-      network = {
-        enable = true;
-        ssh = {
-          enable = true;
-          hostKeys = [ /keystore/sippet/id_sippet_init ];
-          authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmo4gVcs6I/wmpjURsZNVo63/nRfdp80rZv4wxg8Y2y" ];
-          port = 2223;
-        };
-        udhcpc.extraArgs = [ "-t 10" ];
-      };
-      kernelModules = [ "amdgpu" "r8169" ];
-      postDeviceCommands = lib.mkAfter ''
-        zfs rollback -r sippet-os/ephemeral/slash@blank
-      '';
-    };
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    supportedFilesystems = [ "zfs" "ntfs" ];
-    zfs.devNodes = "/dev/disk/by-label/sippet-os";
-  }; 
 
   environment.systemPackages = with pkgs; [
     # Terminal Tools
@@ -64,7 +42,6 @@
     wget
     curl
     rsync
-    git
     # Performance Monitors
     acpi
     htop
@@ -100,6 +77,31 @@
   # Passwordless sudo when SSH'ing with keys
   security.pam.enableSSHAgentAuth = true;
 
+  system.stateVersion = "23.05";
+  
+  nix = {
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+    };
+  };
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
+  networking.hostId = "3f871983";
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
+  boot.kernelParams = [ "elevator=none" "radeon.si_support=0" "amdgpu.si_support=1" ];
+  boot.zfs.devNodes = "/dev/disk/by-label/sippet-os";
+
+   zramSwap = {
+    enable = true;
+    swapDevices = 1;
+  };
+
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
@@ -108,10 +110,35 @@
   documentation.man.enable = true;
   documentation.info.enable = false;
   documentation.doc.enable = false;
- 
+
+  # Don't wait for network startup
+  # https://old.reddit.com/r/NixOS/comments/vdz86j/how_to_remove_boot_dependency_on_network_for_a
+  systemd = {
+    targets.network-online.wantedBy = pkgs.lib.mkForce []; # Normally ["multi-user.target"]
+    services.NetworkManager-wait-online.wantedBy = pkgs.lib.mkForce []; # Normally ["network-online.target"]
+  };
+  
   services.logind.extraConfig = ''
     HandleLidSwitch=ignore
     HandleLidSwitchExternalPower=ignore
   '';
 
+  boot = {
+    initrd = {
+      network = {
+        enable = true;
+        ssh = {
+          enable = true;
+          hostKeys = [ /keystore/sippet/id_sippet_init ];
+          authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmo4gVcs6I/wmpjURsZNVo63/nRfdp80rZv4wxg8Y2y" ];
+          port = 2223;
+        };
+        udhcpc.extraArgs = [ "-t 10" ];
+      };
+      kernelModules = [ "amdgpu" "r8169" ];
+      postDeviceCommands = lib.mkAfter ''
+        zfs rollback -r sippet-os/ephemeral/slash@blank
+      '';
+    };
+  };  
 }
