@@ -164,6 +164,8 @@
     libsForQt5.bismuth
     # Greeter
     greetd.tuigreet
+    # Networking
+    wireguard-tools
   ];
 
   programs.zsh.enable = true;
