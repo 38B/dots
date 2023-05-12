@@ -178,4 +178,20 @@
 #    xcape -e "Caps_Lock=Escape"
 #  '';
 
+  # Wireguard 
+  # setup firewall to allow all traffic through
+  networking.firewall = {
+    # if packets are still dropped, they will show up in dmesg
+    logReversePathDrops = true;
+    # wireguard trips rpfilter up
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN || true
+     '';
+    };
+
 }
