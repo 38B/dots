@@ -185,12 +185,12 @@
     logReversePathDrops = true;
     # wireguard trips rpfilter up
     extraCommands = ''
-       ${pkgs.iptables}/bin/iptables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN
-       ${pkgs.iptables}/bin/iptables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN
+       iptables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN
+       iptables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN
     '';
     extraStopCommands = ''
-       ${pkgs.iptables}/bin/iptables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN || true
-       ${pkgs.iptables}/bin/iptables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN || true
+       iptables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN || true
+       iptables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN || true
      '';
     };
 
