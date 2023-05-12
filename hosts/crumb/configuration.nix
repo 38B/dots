@@ -181,17 +181,8 @@
   # Wireguard 
   # setup firewall to allow all traffic through
   networking.firewall = {
-    # if packets are still dropped, they will show up in dmesg
-    logReversePathDrops = true;
-    # wireguard trips rpfilter up
-    extraCommands = ''
-       iptables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN
-       iptables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN
-    '';
-    extraStopCommands = ''
-       iptables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 10017 -j RETURN || true
-       iptables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 10017 -j RETURN || true
-     '';
-    };
+   logReversePathDrops = true;
+   checkReversePath = "loose";
+  };
 
 }
