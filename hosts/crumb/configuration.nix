@@ -12,6 +12,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Quiet boot
+  boot.consoleLogLevel = 0;
+  boot.initrd.verbose = false;
+
   networking.hostName = "crumb";
   networking.hostId = "eee65be0";
   networking.networkmanager.enable = true;
