@@ -145,7 +145,6 @@
     zstd
     zip
     unzip
-    # Download Tools
     wget
     curl
     rsync
@@ -164,6 +163,7 @@
     cryptsetup
     # Browsers
     qutebrowser
+    chromium  
     # KDE Tools
     libsForQt5.bismuth
     # Greeter
