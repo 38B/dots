@@ -153,7 +153,7 @@
       privateKeyFile = "/keystore/sippet/wg_sippet";
       peers = [
         {
-          publicKey = "{Aa1Z+ityCCLGIw7tbKP1F1RfSJ2zTM/D3BT6ktj2gmo=}";
+          publicKey = "Aa1Z+ityCCLGIw7tbKP1F1RfSJ2zTM/D3BT6ktj2gmo=";
           allowedIPs = [ "0.0.0.0/0" ];
           # Or forward only particular subnets
           #allowedIPs = [ "10.100.0.1" "91.108.12.0/22" ];
