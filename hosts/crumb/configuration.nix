@@ -149,6 +149,8 @@
     curl
     rsync
     git
+    s3cmd
+    duplicati
     # Keyboard Tools
     xcape
     # Performance Monitors
