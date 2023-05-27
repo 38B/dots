@@ -179,6 +179,7 @@
     enable = true;
     settings = {
       interface = "wg0";
+      server = [ "9.9.9.9" "149.112.112.112" ];
     };
   };
 }
