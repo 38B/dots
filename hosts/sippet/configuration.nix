@@ -146,15 +146,22 @@
     allowedUDPPorts = [ 10071 ];
   };
 
-  networking.wireguard.interfaces = let
+  networking.wg-quick.interfaces = let
     publicKey = "Aa1Z+ityCCLGIw7tbKP1F1RfSJ2zTM/D3BT6ktj2gmo=";
   in {
     wg0 = {
       ips = [ "10.10.100.10/32" ];
       listenPort = 10071;
       privateKeyFile = "/keystore/sippet/wg_sippet";
-      postUp = ["wg set wgnet0 peer ${publicKey} persistent-keepalive 25"];
-
+      postUp = ''
+        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.1/24 -o eth0 -j MASQUERADE
+        wg set wgnet0 peer ${publicKey} persistent-keepalive 25;
+      '';
+      preDown = ''
+        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.1/24 -o eth0 -j MASQUERADE
+      '';
       peers = [
         {
           inherit publicKey;
@@ -166,5 +173,12 @@
         }
       ];
     };
+  };
+
+  services.dnsmasq = {
+    enable = true;
+    extraConfig = ''
+      interface=wg0
+    '';
   };
 }
