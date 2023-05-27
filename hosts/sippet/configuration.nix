@@ -141,4 +141,26 @@
       '';
     };
   };  
+  
+  networking.firewall = {
+    allowedUDPPorts = [ 10071 ];
+  };
+
+  networking.wireguard.interfaces = {
+    wg0 = {
+      ips = [ "10.10.100.10/32" ];
+      listenPort = 10071;
+      privateKeyFile = "/keystore/sippet/wg_sippet";
+      peers = [
+        {
+          publicKey = "{Aa1Z+ityCCLGIw7tbKP1F1RfSJ2zTM/D3BT6ktj2gmo=}";
+          allowedIPs = [ "0.0.0.0/0" ];
+          # Or forward only particular subnets
+          #allowedIPs = [ "10.100.0.1" "91.108.12.0/22" ];
+          endpoint = "exit66.duckdns.org:10071";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
 }
