@@ -150,7 +150,7 @@
     publicKey = "Aa1Z+ityCCLGIw7tbKP1F1RfSJ2zTM/D3BT6ktj2gmo=";
   in {
     wg0 = {
-      ips = [ "10.10.100.10/32" ];
+      address = [ "10.10.100.10/32" ];
       listenPort = 10071;
       privateKeyFile = "/keystore/sippet/wg_sippet";
       postUp = ''
