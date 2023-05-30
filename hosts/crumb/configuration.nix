@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ../../homes/muck
     ../../homes/speck
+    ../../homes/blob
   ];
 
   # Use the systemd-boot EFI boot loader.
