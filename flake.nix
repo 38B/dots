@@ -22,6 +22,10 @@
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
+
   };
 
   outputs = inputs @ {
@@ -31,6 +35,7 @@
     nixos-generators,
     nixos-hardware,
     home-manager,
+    hyprland,
     ...
   }:
     (flake-parts.lib.evalFlakeModule
