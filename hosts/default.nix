@@ -56,7 +56,6 @@ in {
         ++ [
           inputs.home-manager.nixosModules.home-manager
           inputs.hyprland.nixosModules.default
-          {programs.hyprland.enable = true;}
           ./crumb/configuration.nix
 	];
     };

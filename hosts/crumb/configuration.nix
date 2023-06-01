@@ -192,4 +192,5 @@
    allowedUDPPorts = [ 10071 ];
   };
 
+  programs.hyprland.enable = true;
 }
