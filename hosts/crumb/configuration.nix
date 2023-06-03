@@ -172,6 +172,8 @@
     greetd.tuigreet
     # Networking
     wireguard-tools
+    # Hyprland tools
+    fuzzel
   ];
 
   programs.zsh.enable = true;
