@@ -174,6 +174,7 @@
     wireguard-tools
     # Hyprland tools
     fuzzel
+    bemenu
   ];
 
   programs.zsh.enable = true;
