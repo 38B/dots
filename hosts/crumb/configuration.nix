@@ -4,6 +4,7 @@
 
   imports = [ 
     ./hardware-configuration.nix
+    ../../homes/blob
     ../../homes/muck
     ../../homes/speck
   ];
