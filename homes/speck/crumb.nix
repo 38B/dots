@@ -13,6 +13,11 @@
     historySubstringSearch.enable = true;
   };
 
+  xdg = {
+    enable = true;
+    cacheHome = "/run/user/1111/";
+  }
+
   home = {
     username = "speck";
     homeDirectory = "/home/speck";
