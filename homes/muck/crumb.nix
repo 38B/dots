@@ -1,7 +1,6 @@
 { lib, config, pkgs, ... }:
 {
   programs.home-manager.enable = true;
-  programs.zsh.enable = true;
 
   home = {
     username = "muck";
@@ -11,6 +10,13 @@
       neofetch
       kmymoney
       godot
+    ];
+  };
+
+  programs.zsh = { 
+    enable = true;
+    setOptions = [
+      "HIST_EXPIRE_DUPS_FIRST"
     ];
   };
 
