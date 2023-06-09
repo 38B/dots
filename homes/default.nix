@@ -16,6 +16,13 @@
         ];
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       };
+
+       "speck@crumb" = inputs.home-manager.lib.homeManagerConfiguration {
+        modules = [
+          ./speck/crumb.nix
+        ];
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+      };
    };
   };
 }
