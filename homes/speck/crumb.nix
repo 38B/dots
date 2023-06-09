@@ -16,7 +16,7 @@
   xdg = {
     enable = true;
     cacheHome = "/run/user/1111/";
-  }
+  };
 
   home = {
     username = "speck";
