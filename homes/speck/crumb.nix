@@ -8,7 +8,7 @@
       ignoreDups = true;
       ignorePatterns = [ "sudo shutdown *" ];
       ignoreSpace = true;
-      path = "$HOME/.local/share/zsh";
+      path = "$HOME/.local/share/zsh/zsh_history";
     };
     historySubstringSearch.enable = true;
   };
