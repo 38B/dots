@@ -15,8 +15,8 @@
 
   xdg = {
     enable = true;
-    cacheHome = "$HOME/.local/run/user/1111/";
-    configHome = "$HOME/.local/etc";
+    cacheHome = ".local/run/";
+    configHome = "$HOME/.local/etc/";
   };
 
   home = {
