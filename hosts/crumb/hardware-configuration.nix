@@ -33,8 +33,8 @@
       fsType = "zfs";
     };
     
-  fileSystems."/home/speck/Desktop" =
-    { device = "zroot/eternal/desktops/speck";
+  fileSystems."/home/speck" =
+    { device = "zroot/eternal/home/speck";
       fsType = "zfs";
     };
 
