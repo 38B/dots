@@ -3,10 +3,14 @@
   programs.home-manager.enable = true;
   programs.zsh = { 
     enable = true;
-    setOptions = [
-      "HIST_EXPIRE_DUPS_FIRST"
-      "HIST_VERIFY"
-    ];
+    history = {
+      expireDuplicatesFirst = true;
+      ignoreDups = true;
+      ignorePatterns = [ "sudo shutdown *" ];
+      ignoreSpace = true;
+      path = "$HOME/.local/share/zsh";
+    };
+    historySubstringSearch.enable = true;
   };
 
   home = {
