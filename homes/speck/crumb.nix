@@ -6,7 +6,7 @@
     history = {
       expireDuplicatesFirst = true;
       ignoreDups = true;
-      ignorePatterns = [ "sudo shutdown *" ];
+      ignorePatterns = [ "sudo shutdown *" "exit" ];
       ignoreSpace = true;
       path = "$HOME/.local/share/zsh/zsh_history";
     };
