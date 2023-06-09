@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, inputs, hyprland, ... }:
 {
   # Available through 'home-manager --flake .#your-username@your-hostname'
   flake = {
