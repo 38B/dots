@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, hyprland, ... }:
 {
   programs.home-manager.enable = true;
   programs.zsh = { 
