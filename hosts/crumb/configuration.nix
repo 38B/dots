@@ -180,7 +180,11 @@
   programs.zsh = {
     enable = true;
     enableCompletion = false;
+    shellInit = ''
+      export ZDOTDIR="$HOME/.local/etc/zsh"
+    '';  
   };
+
   environment.shells = with pkgs; [ zsh ];
 
   # CapsLock as ESC and CTRL in X11
