@@ -11,6 +11,7 @@
       path = "${config.home.homeDirectory}/.local/share/zsh/zsh_history";
     };
     historySubstringSearch.enable = true;
+    completionInit = "compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION";
   };
 
   xdg = {
