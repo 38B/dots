@@ -8,15 +8,15 @@
       ignoreDups = true;
       ignorePatterns = [ "sudo shutdown *" "exit" ];
       ignoreSpace = true;
-      path = "$HOME/.local/share/zsh/zsh_history";
+      path = "~/.local/share/zsh/zsh_history";
     };
     historySubstringSearch.enable = true;
   };
 
   xdg = {
     enable = true;
-    cacheHome = "$HOME/.local/run";
-    configHome = "$HOME/.local/etc";
+    cacheHome = "~/.local/run";
+    configHome = "~/.local/etc";
   };
 
   home = {
