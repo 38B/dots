@@ -12,6 +12,7 @@
     };
     historySubstringSearch.enable = true;
     completionInit = "compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION";
+    dotDir = "${config.home.homeDirectory}/.local/etc/zsh";
   };
 
   xdg = {
