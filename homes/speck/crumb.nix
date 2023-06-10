@@ -30,7 +30,7 @@
     ];
   };
 
-  hyprland = {
+  options.wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
       bind = $mainMod, Q, exec, foot,
