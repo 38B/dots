@@ -181,7 +181,7 @@
     enable = true;
     enableCompletion = false;
     shellInit = ''
-      export ZDOTDIR="$HOME/.local/etc/zsh"
+      export ZDOTDIR="/.local/etc/zsh"
     '';  
     histFile = "$HOME/.local/share/zsh/zsh_history";
   };
