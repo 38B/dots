@@ -30,5 +30,12 @@
     ];
   };
 
+  hyprland = {
+    enable = true;
+    extraConfig = ''
+      bind = $mainMod, Q, exec, foot,
+    '';
+  };
+
   imports = [ ];
 }
