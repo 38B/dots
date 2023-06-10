@@ -177,7 +177,10 @@
     fuzzel
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = false;
+  };
   environment.shells = with pkgs; [ zsh ];
 
   # CapsLock as ESC and CTRL in X11
