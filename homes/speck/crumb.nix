@@ -14,7 +14,7 @@
     completionInit = "compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION";
     dotDir = "${config.home.homeDirectory}/.local/etc/zsh";
     shellAliases = {
-      Hyprland = "Hyprland -c ~/.local/etc/hypr";
+      hypr = "Hyprland -c ~/.local/etc/hyprland.conf";
     };
   };
 
