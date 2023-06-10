@@ -183,6 +183,7 @@
     shellInit = ''
       export ZDOTDIR="$HOME/.local/etc/zsh"
     '';  
+    histFile = "$HOME/.local/share/zsh/zsh_history";
   };
 
   environment.shells = with pkgs; [ zsh ];
