@@ -12,7 +12,7 @@
     };
     historySubstringSearch.enable = true;
     completionInit = "compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION";
-    dotDir = "${config.home.homeDirectory}/.local/etc/zsh";
+    dotDir = ".local/etc/zsh";
     shellAliases = {
       hypr = "Hyprland -c ~/.local/etc/hypr/hyprland.conf";
     };
