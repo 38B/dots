@@ -182,5 +182,11 @@
     '';
   };
 
+  programs.git = {
+    enable = true;
+    userName = "Thirty Eighth and Brunswick";
+    userEmail = "86792483+38B@users.noreply.github.com";
+  };
+
   imports = [ ];
 }
