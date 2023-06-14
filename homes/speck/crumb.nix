@@ -133,6 +133,7 @@
     
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     bind = $mainMod, Q, exec, foot
+    bind = $mainMod, W, exec, librewolf
     bind = $mainMod, C, killactive, 
     bind = $mainMod, M, exit, 
     bind = $mainMod, E, exec, dolphin
@@ -186,6 +187,13 @@
     enable = true;
     userName = "Thirty Eighth and Brunswick";
     userEmail = "86792483+38B@users.noreply.github.com";
+  };
+
+  programs.librewolf = {
+    enable = true;
+    settings = {
+      "webgl.disabled" = false;
+    };
   };
 
   imports = [ ];
