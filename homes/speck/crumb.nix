@@ -46,7 +46,7 @@
     };
   };
 
-  imports = [
+  modules = [
     ../../modules/home-manager/desktops/hyprland
   ];
 }
