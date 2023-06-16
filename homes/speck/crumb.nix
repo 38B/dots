@@ -79,5 +79,6 @@
 
   imports = [
     ../../modules/home-manager/desktops/hyprland.nix
+    ../../modules/home-manager/editors/nvim.nix
   ];
 }
