@@ -57,7 +57,7 @@
            event = "VeryLazy",
            config = function()
              require("chatgpt").setup({
-               api_key_cmd = "cat /persist/keystore/chatgpt/apikey"
+               api_key_cmd = "cat /persist/keystore/chatgpt/apikey",
                yank_register = "+",
                edit_with_instructions = {
                  diff = false,
