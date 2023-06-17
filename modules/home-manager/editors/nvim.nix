@@ -58,7 +58,7 @@
             vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
             require("neo-tree").setup({
               close_if_last_window = false,
-              vim.api.nvim_set_keymap( "n", "<C-n>", "<cmd> NeoTreeFocusToggle <CR>", {}),
+              vim.api.nvim_set_keymap( "n", "<leader>n", "<cmd> NeoTreeFocusToggle <CR>", {}),
               vim.api.nvim_set_keymap( "n", "<leader>e", "<cmd> NeoTreeFocus <CR>", {}),
               filesystem = {
                 hijack_netrw_behavior = "open_current",
