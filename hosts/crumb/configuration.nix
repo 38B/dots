@@ -152,6 +152,7 @@
     git
     s3cmd
     duplicati
+    syncthingtray
     # Keyboard Tools
     xcape
     # Performance Monitors
