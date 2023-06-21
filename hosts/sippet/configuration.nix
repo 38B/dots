@@ -42,6 +42,7 @@
     wget
     curl
     rsync
+    git
     # Performance Monitors
     acpi
     htop
@@ -53,6 +54,8 @@
     pinentry-curses
     # Browser
     w3m
+    # Services
+    syncthing
   ];
 
   services.openssh = {
