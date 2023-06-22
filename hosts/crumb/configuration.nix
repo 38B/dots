@@ -210,5 +210,4 @@
 
   programs.hyprland.enable = true;
 
-  services.haveged.enable = true;
 }
