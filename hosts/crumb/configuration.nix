@@ -153,7 +153,7 @@
     s3cmd
     duplicati
     syncthing
-    syncthing-tray
+    syncthingtray
     # Keyboard Tools
     xcape
     # Performance Monitors
