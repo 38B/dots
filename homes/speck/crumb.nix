@@ -77,6 +77,8 @@
     };
   };
 
+  services.syncthing.enable = true;
+
   imports = [
     ../../modules/home-manager/desktops/hyprland.nix
     ../../modules/home-manager/editors/nvim.nix
