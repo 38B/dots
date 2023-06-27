@@ -4,6 +4,7 @@ a collection of my system, user, and shell configurations written in [Nix](https
 ## Structure
 
 #### /bin
+TEST
 a collection of various shell scripts used in installation and maintenance
 
 #### /homes
