@@ -1,7 +1,7 @@
 { lib, config, pkgs, hyprland, ... }:
 {
 
-  gtk {
+  gtk = {
     enable = true;
     cursorTheme = {
       package = pkgs.numix-cursor-theme;
