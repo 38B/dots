@@ -99,13 +99,13 @@
     $mainMod = SUPER
     
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-    bind = $mainMod, Q, exec, foot
+    bind = $mainMod, Q, exec, foot -c ~/.local/etc/foot/foot.ini
     bind = $mainMod, W, exec, librewolf
     bind = $mainMod, C, killactive, 
     bind = $mainMod, M, exit, 
     bind = $mainMod, E, exec, dolphin
     bind = $mainMod, V, togglefloating, 
-    bind = $mainMod, R, exec, fuzzel
+    bind = $mainMod, R, exec, sirula
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
     
