@@ -105,7 +105,7 @@
     bind = $mainMod, M, exit, 
     bind = $mainMod, E, exec, dolphin
     bind = $mainMod, V, togglefloating, 
-    bind = $mainMod, R, exec, sirula
+    bind = $mainMod, R, exec, sirula --gapplication-service
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
     
