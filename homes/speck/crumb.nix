@@ -44,7 +44,7 @@
     settings = {
       main = {
         font = "monospace:size=12";
-	pad = "12x12";
+        pad = "12x12";
       };
       colors = {
         alpha = "1.0";
