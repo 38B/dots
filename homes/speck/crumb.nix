@@ -66,6 +66,7 @@
         bright6 = "63e860";
         regular7 = "efdecb";
         bright7 = "efdecb";
+        alpha = 0.9;
       };
     };
   };
