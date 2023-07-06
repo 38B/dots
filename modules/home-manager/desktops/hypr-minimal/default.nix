@@ -17,5 +17,5 @@
 
   xdg.dataFile."wallpapers/nixos-ice.png" = {
     source = ./nixos-ice.png;
-  }
+  };
 }
