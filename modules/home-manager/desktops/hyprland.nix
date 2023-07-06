@@ -103,7 +103,7 @@
     bind = $mainMod, W, exec, librewolf
     bind = $mainMod, C, killactive, 
     bind = $mainMod, M, exit, 
-    bind = $mainMod, E, exec, dolphin
+    bind = $mainMod, E, exec, foot -c ~/.local/etc/foot/foot.ini mc
     bind = $mainMod, V, togglefloating, 
     bind = $mainMod, R, exec, sirula --gapplication-service
     bind = $mainMod, P, pseudo, # dwindle
@@ -151,5 +151,6 @@
   
   home.packages = with pkgs; [
     sirula
+    mc
   ];
 }
