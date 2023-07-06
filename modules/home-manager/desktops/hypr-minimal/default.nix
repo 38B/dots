@@ -9,6 +9,10 @@
     mc
     hyprpaper
     btop
+    swaylock
+    swayidle
+    wlogout
+    mako
   ];
 
   xdg.configFile.hypr = {
