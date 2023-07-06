@@ -47,7 +47,7 @@
         pad = "12x12";
       };
       colors = {
-        alpha = "1.0";
+        alpha = "0.9";
         foreground = "78796f";
         background = "373b43";
         regular0 = "373b43";
@@ -66,7 +66,6 @@
         bright6 = "63e860";
         regular7 = "efdecb";
         bright7 = "efdecb";
-        alpha = 0.9;
       };
     };
   };
