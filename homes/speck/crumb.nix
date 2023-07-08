@@ -27,6 +27,7 @@
     stateVersion = "23.05";
     packages = with pkgs; [ 
       neofetch
+      qutebrowser
     ];
   };
 
@@ -34,14 +35,6 @@
     enable = true;
     userName = "Thirty Eighth and Brunswick";
     userEmail = "86792483+38B@users.noreply.github.com";
-  };
-
-
-  programs.librewolf = {
-    enable = true;
-    settings = {
-      "webgl.disabled" = false;
-    };
   };
 
   services.syncthing.enable = true;
