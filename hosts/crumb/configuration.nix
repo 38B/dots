@@ -105,6 +105,9 @@
   ];
 
   programs.dconf.enable = true;
+  systemd.user.services.dbus.environment = {
+    DCONF_PROFILE = "~/.local/etc/user";
+  };
 
   security.rtkit.enable = true;
   services.pipewire = {
