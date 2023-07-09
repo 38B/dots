@@ -12,6 +12,6 @@
   security.sudo.extraRules = [ {
     users = ["speck"];
     commmands = 
-     { command = "/bin/physlock"; options = [ "NOPASSWD" ]; };
+     { command = "/bin/physlock"; options = [ "NOPASSWD" ]; }
   } ];
 }
