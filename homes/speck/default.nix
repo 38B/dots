@@ -12,7 +12,7 @@
   security.sudo.extraRules = [ {
     users = ["speck"];
     commands = [
-     { command = "/bin/physlock"; options = [ "NOPASSWD" ]; }
+     { command = "${pkgs.physlock}/bin/physlock"; options = [ "NOPASSWD" ]; }
     ];
   } ];
 }
