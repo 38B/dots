@@ -61,6 +61,6 @@
     };
   };
 
-  wayland.windowManager.sway.enabled = true; # needed for swaylock
+  wayland.windowManager.sway.enable = true; # needed for swaylock
 
 }
