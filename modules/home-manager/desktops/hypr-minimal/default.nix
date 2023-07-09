@@ -64,7 +64,7 @@
     layout = [
       {
         label = "lock-wl";
-        action = "physlock -dsm";
+        action = "sudo physlock -dsm";
         text = "LOCK";
         keybind = "l";
       }
