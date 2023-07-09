@@ -9,9 +9,9 @@
     shell = pkgs.zsh;
   };
 
-  security.sudo.extraRules = {
+  security.sudo.extraRules = [ {
     users = ["speck"];
     commmands = [
      { command = "/bin/physlock"; options = [ "NOPASSWD" ]; }     ];
-  };
+  } ];
 }
