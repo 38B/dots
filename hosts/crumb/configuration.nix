@@ -17,9 +17,22 @@
   boot.consoleLogLevel = 0;
   boot.initrd.verbose = false;
 
-  networking.hostName = "crumb";
-  networking.hostId = "eee65be0";
-  networking.networkmanager.enable = true;
+# ===========================================
+# Networking
+#  -- ports open: 10071/udp - wireguard
+# ===========================================
+
+  networking = {
+    hostName = "crumb";
+    hostId = "eee65be0";
+    firewall = {
+       logReversePathDrops = true;
+       checkReversePath = "loose";
+       allowedUDPPorts = [ 10071 ];
+    };
+    networkmanager.enable = true;
+  };
+
 
   time.timeZone = "America/New_York";
 
@@ -72,19 +85,19 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
-  services.xserver.enable = true;
-  services.greetd = { 
-   enable = true;
-    settings = {
-      default_session = {
-        command =  "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd 'dbus-run-session startplasma-wayland'";
-      };
-    };
-  };
-#  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5 = {
-    enable = true;
-  };
+# services.xserver.enable = true;
+# services.greetd = { 
+#  enable = true;
+#   settings = {
+#     default_session = {
+#       command =  "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd 'dbus-run-session startplasma-wayland'";
+#     };
+#   };
+# };
+# services.xserver.displayManager.sddm.enable = true;
+# services.xserver.desktopManager.plasma5 = {
+#   enable = true;
+# };
 
   xdg = {
     portal = {
@@ -96,18 +109,18 @@
     };
   };
 
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    konsole
-    elisa
-    gwenview
-    khelpcenter
-    plasma-browser-integration
-  ];
+# environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+#   konsole
+#   elisa
+#   gwenview
+#   khelpcenter
+#   plasma-browser-integration
+# ];
 
   programs.dconf.enable = true;
-  systemd.user.services.dbus.environment = {
-    DCONF_PROFILE = "~/.local/etc/user";
-  };
+# systemd.user.services.dbus.environment = {
+#   DCONF_PROFILE = "~/.local/etc/user";
+# };
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -140,6 +153,7 @@
     # Terminal Tools
     neovim
     tmux
+    mc
     # File Tools
     file
     lsof
@@ -158,12 +172,13 @@
     syncthing
     syncthingtray
     # Keyboard Tools
-    xcape
+#    xcape
     # Performance Monitors
     acpi
     htop
     iotop
     iftop
+    btop
     # Crypto Tools
     age
     pinentry
@@ -172,16 +187,18 @@
     # Browsers
     qutebrowser
     chromium  
+    librewolf
     # KDE Tools
-    libsForQt5.bismuth
+#   libsForQt5.bismuth
     # Greeter
-    greetd.tuigreet
+#   greetd.tuigreet
     # Networking
     wireguard-tools
     # Hyprland tools
-    fuzzel
+#   fuzzel
   ];
 
+  environment.shells = with pkgs; [ zsh ];
   programs.zsh = {
     enable = true;
     enableCompletion = false;
@@ -194,22 +211,13 @@
     histFile = "$HOME/.local/share/zsh/zsh_history";
   };
 
-  environment.shells = with pkgs; [ zsh ];
 
-  # CapsLock as ESC and CTRL in X11
-  console.useXkbConfig = true;
+# CapsLock as ESC and CTRL in X11
+#  console.useXkbConfig = true;
 #  services.xserver.xkbOptions = "caps:ctrl_modifier";
 #  environment.shellInit = ''
 #    xcape -e "Caps_Lock=Escape"
 #  '';
-
-  # Wireguard 
-  # setup firewall to allow all traffic through
-  networking.firewall = {
-   logReversePathDrops = true;
-   checkReversePath = "loose";
-   allowedUDPPorts = [ 10071 ];
-  };
 
   programs.hyprland.enable = true;
 
