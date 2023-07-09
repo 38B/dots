@@ -8,4 +8,8 @@
     hashedPassword =  lib.strings.fileContents /persist/keystore/speck/passhash;
     shell = pkgs.zsh;
   };
+
+  security.sudo.extraConfig = ''
+    speck ALL:(ALL) NOPASSWD: /bin/physlock
+  '';
 }
