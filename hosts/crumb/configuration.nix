@@ -222,4 +222,6 @@
   programs.hyprland.enable = true;
   programs.sway.enable = true;
 
+  services.physlock.enable = true;
+  services.physlock.lockMessage = "exit";
 }

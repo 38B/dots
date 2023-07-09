@@ -9,7 +9,6 @@
     mc
     hyprpaper
     btop
-    swaylock
     swayidle
     wlogout
     mako
