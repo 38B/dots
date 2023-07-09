@@ -9,5 +9,9 @@
     shell = pkgs.zsh;
   };
 
-  security.sudo.extraConfig = "speck ALL:(ALL) NOPASSWD: /bin/physlock";
+  security.sudo.extraRules = {
+    users = ["speck"];
+    commmands = [
+     { command = "/bin/physlock"; options = [ "NOPASSWD" ]; }     ];
+  };
 }
