@@ -61,4 +61,6 @@
     };
   };
 
+  programs.sway.enabled = true; # needed for swaylock
+
 }
