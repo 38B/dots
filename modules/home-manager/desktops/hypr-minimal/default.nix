@@ -61,32 +61,32 @@
   };
 
   programs.wlogout = {
-    layout = [
-      lock = {
+    layout = {
+      lock = [{
         label = "lock-wl";
         action = "physlock -dsm";
         text = "LOCK";
         keybind = "l";
-      };
-      logout = {
+      }];
+      logout = [{
         label = "logout-wl";
         action = "loginctl terminate-user $USER";
         text = "LOGOUT";
         keybind = "L";
-      };
-      shutdown = {
+      }];
+      shutdown = [{
         label = "shutdown-wl";
         action = "systemctl shutdown";
         text = "SHUTDOWN";
         keybind = "s";
-      };
-      reboot = {
+      }];
+      reboot = [{
         label = "reboot-wl";
         action = "systemctl reboot";
         text = "REBOOT";
         keybind = "r";
-      };
-    ];
+      }];
+    };
     enable = true;
   };
 }
