@@ -61,7 +61,7 @@
   };
 
   programs.wlogout = {
-    layout = {
+    layout = [
       lock = {
         label = "lock-wl";
         action = "physlock -dsm";
@@ -86,7 +86,7 @@
         text = "REBOOT";
         keybind = "r";
       };
-    };
+    ];
     enable = true;
   };
 }
