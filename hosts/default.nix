@@ -55,7 +55,6 @@ in {
         defaultModules
         ++ [
           inputs.home-manager.nixosModules.home-manager
-          inputs.hyprland.nixosModules.default
           ./crumb/configuration.nix
 	];
     };
