@@ -82,7 +82,7 @@
     swapDevices = 1;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
 # services.xserver.enable = true;
