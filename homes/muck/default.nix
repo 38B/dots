@@ -8,4 +8,12 @@
     hashedPassword =  lib.strings.fileContents /persist/keystore/muck/passhash;
     shell = pkgs.zsh;
   };
+
+  security.sudo.extraRules = [ {
+    users = ["muck"];
+    commands = [
+     { command = "${pkgs.physlock}/bin/physlock"; options = [ "NOPASSWD" ]; }
+    ];
+  } ];
+
 }

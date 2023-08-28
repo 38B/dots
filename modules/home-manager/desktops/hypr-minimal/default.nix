@@ -12,6 +12,7 @@
     swayidle
     wlogout
     mako
+    wofi
   ];
 
   xdg.configFile.hypr = {

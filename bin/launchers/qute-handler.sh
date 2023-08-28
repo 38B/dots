@@ -7,8 +7,10 @@ USAGE: $(basename $0) [-acldbh] [CONTAINER] [EXTRA_COMMANDS]
  -b,--basedir	  Print the location containers are stored.
  -l,--ls,--list	  List all containers.
  -a,--add	  Add a new container.
- -c,--color	  Color to use for in tab bar (to differentiate containers)
- -d,--delete	  Delete a container.
+ -c,--color	  Color to use for in tab bar. (differentiate containers)
+ -D,--delete	  Delete a container.
+ -e, --encrypt   Encrypt container.
+ -d, --decrypt   Decrypt container.
  -h,--help	  Print this help message.
 
 Open a qutebrowser session using the provided container passing extra commands
@@ -31,11 +33,10 @@ different containers:
 
 If color is passed when opening a container, that color will override the
 default container color.
+
+Encrypt and decrypt the contents of a container using age with passwords.
 _EOF_
 }
-
-CONFIG="$XDG_CONFIG_HOME"/qutebrowser/config.py
-USERSCRIPTS="$XDG_DATA_HOME"/qutebrowser/userscripts
 
 error() {
     local exit_code="$1"
@@ -64,9 +65,6 @@ create_container() {
 
     mkdir "$path"
     [ -z "$color" ] || echo "$color" >"$container"/color.txt
-
-    mkdir -p "$path"/data
-    ln -s "$USERSCRIPTS" "$container"/data
 }
 
 add() {
@@ -90,6 +88,14 @@ delete() {
     rm -rf $(containerdir)/"$1"
 }
 
+encrypt() {
+    age -p $(containerdir)/"$1" > $(containerdir)/"${1}.age"
+}
+
+decrypt() {
+    age -d $(containerdir)/"$1".age > $(containerdir)/"$1"
+}
+
 for arg in "$@"; do
     shift
     case "$arg" in
@@ -97,7 +103,9 @@ for arg in "$@"; do
     '--ls' | '--list') set -- "$@" '-l' ;;
     '--color') set -- "$@" '-c' ;;
     '--add') set -- "$@" '-a' ;;
-    '--delete') set -- "$@" '-d' ;;
+    '--decrypt') set -- "$@" '-d' ;;
+    '--delete') set -- "$@" '-D' ;;
+    '--encrypt') set -- "$@" '-e' ;;
     '--help') set -- "$@" '-h' ;;
     *) set -- "$@" "$arg" ;;
     esac
@@ -105,7 +113,7 @@ done
 
 color=""
 [ -d $(containerdir) ] || mkdir -p $(containerdir)
-while getopts 'blc:a:d:h' arg; do
+while getopts 'blc:a:d:D:e:h' arg; do
     case "$arg" in
     b)
         containerdir
@@ -123,7 +131,15 @@ while getopts 'blc:a:d:h' arg; do
         exit 0
         ;;
     d)
+        decrypt "$OPTARG"
+        exit 0
+        ;;
+    D)
         delete "$OPTARG"
+        exit 0
+        ;;
+    e)
+        encrypt "$OPTARG"
         exit 0
         ;;
     h)
@@ -164,11 +180,11 @@ else
     if [ ! -z "$color" ]; then
         set_color="--set colors.tabs.selected.odd.bg $color"
     fi
-
+    
     qutebrowser \
         -B "$container" \
         -C "$CONFIG" \
         --set tabs.title.format "{audio} $(basename $container): {current_title}" \
         $set_color \
-        "$@"
+        "$@" \
 fi

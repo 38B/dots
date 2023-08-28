@@ -10,6 +10,7 @@
       neofetch
       kmymoney
       godot
+      luakit
     ];
   };
 

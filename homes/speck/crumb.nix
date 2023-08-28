@@ -28,7 +28,14 @@
     packages = with pkgs; [ 
       neofetch
       qutebrowser
+      luakit
     ];
+  };
+
+
+  programs.autojump = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.git = {
