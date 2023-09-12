@@ -20,8 +20,8 @@
     recursive = true;
   };
 
-  xdg.dataFile."wallpapers/nixos-ice.png" = {
-    source = ./nixos-ice.png;
+  xdg.dataFile."wallpapers/earthmap.png" = {
+    source = ./earthmap.png;
   };
 
   programs.foot = {
