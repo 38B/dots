@@ -19,8 +19,6 @@
 
        "speck@crumb" = inputs.home-manager.lib.homeManagerConfiguration {
         modules = [
-          inputs.hyprland.homeManagerModules.default
-          {wayland.windowManager.hyprland.enable = true;}
           ./speck/crumb.nix
         ];
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;

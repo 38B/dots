@@ -1,11 +1,10 @@
-{ lib, config, pkgs, hyprland, ... }:
+{ lib, config, pkgs, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
   };
   
   home.packages = with pkgs; [
-    sirula
     mc
     hyprpaper
     btop
@@ -20,8 +19,8 @@
     recursive = true;
   };
 
-  xdg.dataFile."wallpapers/earthmap.png" = {
-    source = ./earthmap.png;
+  xdg.dataFile."wallpapers/earthmap.jpg" = {
+    source = ./earthmap.jpg;
   };
 
   programs.foot = {
