@@ -35,6 +35,7 @@
     nixos-generators,
     nixos-hardware,
     home-manager,
+    hyprland,
     ...
   }:
     (flake-parts.lib.evalFlakeModule
