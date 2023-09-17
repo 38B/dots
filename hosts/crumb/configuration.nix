@@ -83,7 +83,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { selectedFonts = [ "CascadiaCode" ]; })
+    (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
 # services.xserver.enable = true;
 # services.greetd = { 
