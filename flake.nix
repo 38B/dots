@@ -26,6 +26,10 @@
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # StevenBlack hosts file
+    sb-hosts.url = "github:StevenBlack/hosts";
+
+
   };
 
   outputs = inputs @ {
@@ -36,6 +40,7 @@
     nixos-hardware,
     home-manager,
     hyprland,
+    sb-hosts,
     ...
   }:
     (flake-parts.lib.evalFlakeModule
