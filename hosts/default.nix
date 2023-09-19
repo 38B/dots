@@ -45,8 +45,8 @@ in {
         defaultModules
         ++ [
           inputs.home-manager.nixosModules.home-manager
-          inputs.linger.nixosModules.default
-          inputs.pi-hole.nixosModules.default
+          inputs.linger.nixosModule
+          inputs.pi-hole.nixosModule
           ./sippet/configuration.nix
 	];
     };
