@@ -28,7 +28,12 @@
 
     # StevenBlack hosts file
     sb-hosts.url = "github:StevenBlack/hosts";
+   
+   # User lingering for systemd
+   linger.url = "github:mindsbackyard/linger-flake";
 
+   # Pi-Hole in rootless podman container
+   pi-hole.url = "github:mindsbackyard/pihole-flake";
 
   };
 
@@ -41,6 +46,8 @@
     home-manager,
     hyprland,
     sb-hosts,
+    linger,
+    pi-hole,
     ...
   }:
     (flake-parts.lib.evalFlakeModule
