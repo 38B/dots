@@ -31,9 +31,7 @@
        allowedUDPPorts = [ 10071 ];
     };
     networkmanager.enable = true;
-    stevenBlackHosts {
-      enable = true;
-    };
+    stevenBlackHosts.enable = true;
   };
 
 

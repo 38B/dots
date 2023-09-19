@@ -55,6 +55,7 @@ in {
         defaultModules
         ++ [
           inputs.home-manager.nixosModules.home-manager
+          inputs.sb-hosts.nixosModule
           ./crumb/configuration.nix
 	];
     };
