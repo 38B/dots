@@ -29,6 +29,7 @@
       neofetch
       qutebrowser
       luakit
+      yazi
     ];
   };
 
