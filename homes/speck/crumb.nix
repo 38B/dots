@@ -30,6 +30,8 @@
       qutebrowser
       luakit
       yazi
+      feh
+      ffmpegthumbnailer
     ];
   };
 
