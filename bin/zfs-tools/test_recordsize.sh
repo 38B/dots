@@ -1,5 +1,6 @@
 #! /bin/sh
 # https://klarasystems.com/articles/choosing-the-right-zfs-pool-layout
+
 file=test.tmp
 rm $file 2> /dev/null
 ST=`sysctl -n vfs.zfs.txg.timeout` 
