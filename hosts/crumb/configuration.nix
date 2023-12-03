@@ -28,7 +28,7 @@
     firewall = {
        logReversePathDrops = true;
        checkReversePath = "loose";
-       allowedUDPPorts = [ 10071 ];
+       allowedUDPPorts = [ 13001 ];
     };
     networkmanager.enable = true;
     stevenBlackHosts.enable = true;
